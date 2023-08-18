@@ -1,3 +1,22 @@
+local ss = game:GetService("ServerStorage")
+local mainscript = ss:FindFirstChild("WeaponScript")
+
+local function createtool(plr, dmg, rng, kb, name)
+    local tool = Insance.new("Tool", plr.Backpack)
+    local dval = Instance.new("IntValue", tool)
+    local rval = Instance.new("IntValue", tool)
+    local kval = Instance.new("IntValue", tool)
+    local sc = mainscript:Clone()
+    tool.Name = name
+    dval.Name = damageValue
+    rval.Name = rangeValue
+    kval.Name = knockbackValue
+    dval.Value = dmg
+    rval.Value = rng
+    kval.Value = kb
+    sc.Parent = tool
+end
+
 local attributes = {
     ["Sword"] = {
         ["damage"] = 35,
@@ -22,9 +41,9 @@ local attributes = {
 }
 
 for i,v in pairs(attributes) do
-    local tool = Insance.new("Tool", plr.Backpack)
     local dmg = attributes[i].damage
     local rng = attributes[i].range
     local kb = attributes[i].knockback
-    tool.Name = attributes[i]
+    local name = attributes[i]
+    createtool(plr, dmg, rng, kb, name)
 end
