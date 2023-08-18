@@ -28,5 +28,3 @@ for i,v in pairs(attributes) do
     local kb = attributes[i].knockback
     tool.Name = attributes[i]
 end
-
-
